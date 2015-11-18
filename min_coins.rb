@@ -25,3 +25,26 @@ def coins(total)
 end
 
 puts coins(number.to_i)
+
+denoms = [1, 5, 10 , 25, 50]
+total = 37
+
+def getCoins(denoms, total)
+  coins = 0
+  # ensure denoms is sorted
+  denoms.sort!
+
+  denomToTest = denoms.pop
+
+  puts "Testing denomination #{denomToTest}"
+
+  num = (total / denomToTest).floor
+
+  puts "#{num} of the denomination #{denomToTest}"
+
+  newTotal = total - (num * denomToTest)
+
+  getCoins(denoms, newTotal) if newTotal > 0
+end
+
+getCoins(denoms, total)
